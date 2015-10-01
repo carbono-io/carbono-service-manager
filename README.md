@@ -2,8 +2,8 @@
 
 This package purpose is to register a service in 
 [etcd](https://github.com/coreos/etcd) and retrive the service's needed hosts 
-to operate. It relies on [config](https://www.npmjs.com/package/config) to get the data needed to run, if not 
-present the process will exit.
+to operate. It relies on [config](https://www.npmjs.com/package/config) to get
+the data needed to run, if not present the process will exit.
 
 ## Install
 
@@ -25,9 +25,10 @@ Config `default.json` file:
 	    "etcd": {
 			"host": "192.168.0.69",
 			"port": 7689,
-			"key" : "cbs1", // The service key in etcd
+			"key" : "cbs1",					// The service key in etcd
 			"alias" : "Carbono Service 1",
-			"dependencies" : [
+			"namespace" : "/service-one/",	// Optional: Service namespace
+			"dependencies" : [ 				// Optional: Service dependencies
 				{"key" : "cbs6", "alias" : "Carbono Service 6"},
 				{"key" : "cbs12", "alias" : "Carbono Service 12"},
 				{"key" : "cbs2", "alias" : "Carbono Service 2"},
@@ -51,9 +52,11 @@ In Output:
 	- Service Carbono Service 7 found at etcd.
 ```
 
-In case a service is not found or the module is unable to register itself the process will exit.
+In case a service is not found or the module is unable to register itself the 
+process will exit.
 
 ```
 	+ Module Carbono Service 1 registered with etcd.
-	[ERROR] Finding Carbono Service 6 with etcd: {"errorCode":100,"message":"Key not found","cause":"","index":141}
+	[ERROR] Finding Carbono Service 6 with etcd: 
+	{"errorCode":100,"message":"Key not found","cause":"","index":141}
 ```
