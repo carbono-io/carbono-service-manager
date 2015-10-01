@@ -11,13 +11,16 @@ present the process will exit.
 
 ## Usage
 
-In `index.js`:
+Server `index.js`:
+```
 	var server = app.listen(80, function () {
     	// Service discovery and registration
     	require('carbono-service-manager');
 	});
+```
 
-In config file:
+Config `default.json` file:
+```
 	{
 	    "etcd": {
 			"host": "192.168.0.69",
@@ -31,8 +34,15 @@ In config file:
 				{"key" : "cbs7", "alias" : "Carbono Service 7"}
 			]
     }
+```
 
-Output:
+Server `service-6-client.js` module:
+```
+    var etcd = require('carbono-service-manager');
+	var hostAddress = etcd.getServiceUrl('cbs6');
+```
+
+In Output:
 ```
 	+ Module Carbono Service 1 registered with etcd.
 	- Service Carbono Service 6 found at etcd.
