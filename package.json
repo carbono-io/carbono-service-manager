@@ -1,6 +1,6 @@
 {
   "name": "carbono-service-manager",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Module for service discovery",
   "main": "index.js",
   "scripts": {
